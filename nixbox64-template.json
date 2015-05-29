@@ -16,20 +16,21 @@
         "mkfs.ext4 -j -L nixos /dev/sda1<enter><wait5>",
         "mount LABEL=nixos /mnt<enter><wait>",
         "nixos-generate-config --root /mnt<enter><wait>",
-        "curl http://{{ .HTTPIP }}:{{ .HTTPPort }}/configuration.nix | sed -e 's|nixbox|nixbox64|g' > /mnt/etc/nixos/configuration.nix<enter><wait>",
-        "nixos-install && reboot<enter>"
+        "curl http://{{ .HTTPIP }}:{{ .HTTPPort }}/configuration.nix | sed -e 's|nixbox|nixbox64|g' > /mnt/etc/nixos/configuration.nix<enter><wait>"
       ],
+      "vboxmanage": [
+           ["modifyvm", "{{.Name}}", "--memory", "4096"]],
       "guest_additions_mode": "disable",
       "guest_os_type": "Linux_64",
       "http_directory": "http",
-      "iso_checksum": "d0f4cf841d0502dc96c68c13cb21a0e2",
-      "iso_checksum_type": "md5",
-      "iso_url": "http://nixos.org/releases/nixos/14.12/nixos-14.12.231.139ead2/nixos-minimal-14.12.231.139ead2-x86_64-linux.iso",
+      "iso_checksum": "2a479519d6db85108a14479a29f8b3dfdacdd8e884e00314396a086b503713a5",
+      "iso_checksum_type": "sha256",
+      "iso_url": "http://releases.nixos.org/nixos/14.12/nixos-14.12.374.61adf9e/nixos-minimal-14.12.374.61adf9e-x86_64-linux.iso",
       "shutdown_command": "sudo shutdown -h now",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
-      "ssh_wait_timeout": "5m",
+      "ssh_wait_timeout": "10m",
       "virtualbox_version_file": ".vbox_version"
     }
   ],
